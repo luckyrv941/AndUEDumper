@@ -2,7 +2,7 @@ name: Build AndUEDumper
 #Trigger
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build:
