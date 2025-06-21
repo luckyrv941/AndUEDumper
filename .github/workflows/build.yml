@@ -1,0 +1,26 @@
+name: Build AndUEDumper
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Set up NDK
+      uses: nttld/setup-ndk@v1
+      with:
+        ndk-version: r25c
+
+    - name: Build with ndk-build
+      run: ndk-build
+
+    - name: Upload built binary
+      uses: actions/upload-artifact@v3
+      with:
+        name: AndUEDumper-ARM64
+        path: libs/arm64-v8a/AndUEDumper
